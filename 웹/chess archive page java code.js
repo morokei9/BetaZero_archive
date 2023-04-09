@@ -16,7 +16,7 @@ loadEpisodesButton.addEventListener('click', async () => {
 });
 
 async function fetchPGNData(filename) {
-  const response = await fetch(filename);
+  const response = await fetch('/pgn txt/' + filename);
   const fileContent = await response.text();
   return fileContent.split('\n\n').filter(pgn => pgn.trim() !== '');
 }
