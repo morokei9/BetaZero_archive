@@ -2,13 +2,13 @@ const loadEpisodesButton = document.getElementById('load-episodes');
 const episodeList = document.getElementById('episode-list');
 
 loadEpisodesButton.addEventListener('click', async () => {
-  const episodes = await fetchPGNData('2023-04-10_PGN_LOG.txt');
+  const episodes = await fetchPGNData('2023년 04월 10일_PGN_LOG.txt');
   
   episodeList.innerHTML = '';
   episodes.forEach((pgnData, index) => {
     const episodeLink = document.createElement('a');
-    episodeLink.href = `https://lichess.org/api/import?pgn=${encodeURIComponent(pgnData)}`;
-    episodeLink.target = '_blank';
+    episodeLink.href = `#`;
+    episodeLink.addEventListener('click', () => displayGames(pgnData));
     episodeLink.textContent = `EPISODE ${index + 1}`;
     episodeList.appendChild(episodeLink);
     episodeList.appendChild(document.createElement('br'));
@@ -24,12 +24,11 @@ function readFile(file) {
   });
 }
 
-async function displayGames(fileInput) {
-  const file = fileInput.files[0];
-  const content = await readFile(file);
-
-  const games = content.split("\n\n\n").filter((game) => game.trim() !== "");
+async function displayGames(pgnData) {
+  const games = pgnData.split("\n\n\n").filter((game) => game.trim() !== "");
   const container = document.getElementById("games");
+
+  container.innerHTML = '';
 
   games.forEach((game, index) => {
     const boardContainer = document.createElement("div");
