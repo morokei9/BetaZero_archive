@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PGN Log</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard.js/1.0.0/chessboard.min.js"></script>
     <script src="main.js" defer></script>
 </head>
 <body>
+    <h1>PGN Log</h1>
     <button id="load-episodes">2023년 04월 10일</button>
+    <input type="file" id="file-input" onchange="displayGames(this)" />
+    <div id="games"></div>
     <div id="episode-list"></div>
 </body>
 </html>
